@@ -1,0 +1,22 @@
+server:
+    port: 8090
+
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        sql-script-encoding: "UTF-8"
+        url: "jdbc:h2:mem:catalogue;DB_CLOSE_DELAY=-1"
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                dialect: "org.hibernate.dialect.H2Dialect"
+    main:
+        lazy-initialization: true
+
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: debug
