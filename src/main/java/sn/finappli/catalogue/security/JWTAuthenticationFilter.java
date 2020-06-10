@@ -48,10 +48,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) {
-        log.info(authResult.getPrincipal());
-
         var user = (UserDetails) authResult.getPrincipal();
-        log.info(user);
         var encodedSecret = SecurityConstant.SECRET.getBytes();
 
         var roles = user.getAuthorities()
