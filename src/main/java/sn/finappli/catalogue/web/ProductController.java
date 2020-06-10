@@ -4,14 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import sn.finappli.catalogue.entities.Product;
 import sn.finappli.catalogue.services.ProductService;
 
 import java.util.Arrays;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 @RequestMapping("/products")
 public class ProductController {

@@ -12,8 +12,6 @@ spring:
         properties:
             hibernate:
                 dialect: "org.hibernate.dialect.H2Dialect"
-    main:
-        lazy-initialization: true
 
 logging:
     level:
