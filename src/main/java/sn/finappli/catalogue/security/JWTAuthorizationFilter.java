@@ -8,8 +8,6 @@ import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,9 +26,9 @@ import java.util.stream.Collectors;
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(@NotNull HttpServletRequest request,
-                                    @NotNull HttpServletResponse response,
-                                    @NotNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
         setHeaders(response);
         var authentication = getAuthentication(request);
         if (authentication == null) {
@@ -41,13 +39,13 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private void setHeaders(@NotNull HttpServletResponse response) {
+    private void setHeaders(HttpServletResponse response) {
         response.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method," +
                 "Access-Control-Request-Headers, Authorization");
         response.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
     }
 
-    private @Nullable UsernamePasswordAuthenticationToken getAuthentication(@NotNull HttpServletRequest request) {
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         var token = request.getHeader(SecurityConstant.HEADER_NAME);
         if (StringUtils.isNotEmpty(token) && token.startsWith(SecurityConstant.TOKEN_PREFIX)) {
             try {
