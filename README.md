@@ -1,4 +1,4 @@
-# TestAppli Gestion de stock
+# TestAppli: Gestion de stock
 
 TestAppli est une application Restful permettant la gestion du stock de produits.
 
